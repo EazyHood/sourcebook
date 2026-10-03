@@ -2,6 +2,10 @@
 
 A local workspace for reviewing commitments in notes and briefs. It extracts proposed tasks using an NVIDIA model on Nebius, then checks every quotation against the original document and line before displaying it. Click a quotation to inspect its context; mark reviewed items and export the result as JSON.
 
+[Open the public worked example](https://sourcebook-eazyhood.bmhennessy.chatgpt.site)
+
+The public example runs the same review workflow with fixed synthetic results. Live inference is disabled until the Nebius account is ready and its output has been evaluated. The hosted Worker, its tests and database migration are in [`deployment/site`](deployment/site/README.md). The Python app below remains a separate local build.
+
 ## Run
 
 Python 3.11 or later; no packages to install. Run these commands from this folder:
@@ -40,11 +44,14 @@ The browser loses its in-memory workspace when reloaded. Nebius receives the doc
 ```powershell
 python -m unittest -v
 node --check static/app.js
+node --test tests/ui-busy.test.mjs
 ```
 
 28 tests passed in the 3 October 2026 revision. Tests cover quotation rejection, attribution, limits, provider request construction, redirect rejection, bounded provider output, token-usage filtering, HTTP assets, CSRF, missing credentials and evaluation provenance. Provider transport is a test double: **this revision has not verified a live Nebius response**. The earlier browser checks covered the worked example, source inspection, and horizontal overflow at mobile/tablet widths; captures remain in `screenshots/`. The visual interface was not changed in this revision.
 
 The model contract is always a JSON object: `{"actions":[]}` when there are no commitments. A bare array is invalid. This matches the API's JSON-object response mode and the application validator.
+
+Four shared UI regression cases also pass for the local and hosted builds. A deferred file read cannot overlap an example load, model review or another document edit; the controls recover after both success and failure. Those cases failed against the earlier UI before the operation lock was added. The Worker has a separate 29-test suite under `deployment/site`.
 
 ## Reproducible model evaluation
 
@@ -81,9 +88,9 @@ Every action includes blank fields for a later human review of interpretation an
 
 ## Design and boundaries
 
-The interface keeps source material next to proposed actions and uses quiet editorial typography. Controls are native HTML with labels, focus indicators and reduced-motion support. It follows the supplied document-review preferences without cursor effects.
+The interface keeps source material next to proposed actions. Native controls have labels and focus indicators, and the stylesheet respects reduced-motion preferences.
 
-This is a single-user local MVP, not a hosted service. It has no authentication, PDF/OCR ingestion, background job queue or multi-user storage. Exact-source verification proves a quotation's location, **not** that a proposed task correctly interprets it. Human review remains necessary. The model cannot send email, run tools or execute document instructions.
+The Python build is a single-user local app. The hosted build uses a Worker and a durable request quota; its live provider access starts disabled. Neither build includes PDF/OCR ingestion, a background job queue or shared document storage. Exact-source verification proves a quotation's location, **not** that a proposed task correctly interprets it. Human review remains necessary. The model cannot send email, run tools or execute document instructions.
 
 ## Technical references
 
