@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-03T05:05:51.961485+00:00",
+  "fixture_provenance": "hand-authored-synthetic",
+  "fixture_sha256": "6dac66d21b7d67aef2bbbc20e42bd411052fbd8b702f69130ab396e6ed369074",
+  "prompt_sha256": "601bcc00bf3473f0b165a02c3f3199e97a56ed96afa5e6f311a54b3c4da1a327",
+  "application_sha256": "12560183b53698880304ac851f05420dd727d5997c54697f00549b7a8281ec58",
+  "evaluator_sha256": "aec7eaaac6bac4e09d234cc7cf31bcf22337ca708a929ae9129f3b067905a24a",
+  "requested_model": "nvidia/nemotron-3-super-120b-a12b",
+  "endpoint": "https://api.tokenfactory.us-central1.nebius.com/v1",
+  "case_count": 10,
+  "case_ids": [
+    "explicit-english",
+    "explicit-spanish",
+    "no-commitments",
+    "negated-and-hypothetical",
+    "document-injection",
+    "relative-date",
+    "missing-owner-date",
+    "conflicting-documents",
+    "line-normalization",
+    "unicode-quotation"
+  ],
+  "response_count": 0,
+  "metrics": null,
+  "limitations": [
+    "Hand-authored fixtures are not a representative production benchmark.",
+    "An exact citation or expected anchor does not establish semantic correctness.",
+    "Task interpretation, attribution and conflicts require manual review.",
+    "Latency includes client and network time; token counts are provider-reported.",
+    "response_count includes parsed provider responses; transport/JSON failures remain separate failed cases."
+  ],
+  "mode": "preparation-only",
+  "results": [],
+  "note": "No model was called. No measured scores exist."
+}
