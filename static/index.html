@@ -1,1 +1,18 @@
-
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Sourcebook — commitments with evidence</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body><a class="skip" href="#workspace">Skip to workspace</a>
+<header><a class="wordmark" href="/">Sourcebook<span> / document review</span></a><span id="connection" class="status">Checking connection…</span></header>
+<main id="workspace">
+<section class="intro"><div><h1>Find the work.<br><em>Keep the evidence.</em></h1><p>Turn notes and briefs into a reviewable list of commitments. Every result links back to the exact source line.</p></div><button id="example" class="secondary">Open a worked example <span aria-hidden="true">↗</span></button></section>
+<div id="message" role="status" aria-live="polite"></div>
+<div class="workspace">
+<aside class="sources" aria-labelledby="sources-heading"><div class="section-head"><h2 id="sources-heading">Your documents</h2><span id="doc-count">0 / 10</span></div><p class="hint">Plain text and Markdown, up to 80,000 characters in total.</p>
+<label class="upload" for="files">Add .txt or .md files<input id="files" type="file" accept=".txt,.md,text/plain,text/markdown" multiple></label>
+<form id="add-form"><label for="doc-name">Document name</label><input id="doc-name" maxlength="120" required autocomplete="off" placeholder="Client call — October 2"><label for="doc-text">Or paste notes</label><textarea id="doc-text" rows="6" required placeholder="Include the original wording, people and dates."></textarea><button class="secondary" type="submit">Add document</button></form>
+<ul id="doc-list" class="doc-list"></ul>
+<button id="analyze" disabled>Review with Nebius</button><p id="provider-note" class="hint">Checking configuration…</p><p class="hint">Review sends the documents to Nebius. This app keeps them in memory only. Closing or reloading the page clears your work.</p>
+</aside>
+<section class="review" aria-labelledby="review-heading"><div class="section-head"><h2 id="review-heading">Commitments to review</h2><button id="export" class="text-button" disabled>Export JSON ↓</button></div><p id="result-note" class="hint">Add documents, then review. You stay in charge of what becomes a task.</p><div id="actions" class="actions"><div class="empty"><div class="paper" aria-hidden="true">“ ”</div><h3>The source stays attached.</h3><p>Tasks appear here with a quoted passage, its document and line number. Open the worked example to see the review flow.</p></div></div>
+<section id="evidence-panel" class="evidence-panel" hidden aria-labelledby="evidence-heading"><div class="section-head"><h3 id="evidence-heading">Source passage</h3><button id="close-source" class="text-button">Close</button></div><div id="source-lines"></div></section>
+</section></div>
+</main><footer>Sourcebook · Local prototype for the Nebius × NVIDIA hackathon <span>Exact citations are checked. Interpretations still need your review.</span></footer></body></html>
